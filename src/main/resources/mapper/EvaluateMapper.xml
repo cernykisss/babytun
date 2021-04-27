@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kai.babytun.mapper.EvaluateMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.kai.babytun.entity.Evaluate">
+        <id column="evaluate_id" property="evaluateId" />
+        <result column="content" property="content" />
+        <result column="stars" property="stars" />
+        <result column="create_time" property="createTime" />
+        <result column="goods_id" property="goodsId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        evaluate_id, content, stars, create_time, goods_id
+    </sql>
+
+</mapper>

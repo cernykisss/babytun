@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kai.babytun.mapper.GoodsParamMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.kai.babytun.entity.GoodsParam">
+        <id column="gp_id" property="gpId" />
+        <result column="gp_param_name" property="gpParamName" />
+        <result column="gp_param_value" property="gpParamValue" />
+        <result column="goods_id" property="goodsId" />
+        <result column="gp_order" property="gpOrder" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        gp_id, gp_param_name, gp_param_value, goods_id, gp_order
+    </sql>
+
+    <select id="findParamByGoodsId" parameterType="long" resultType="com.kai.babytun.entity.GoodsParam">
+        select * from t_goods_param where goods_id = #{value}
+    </select>
+    
+</mapper>

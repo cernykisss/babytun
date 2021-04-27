@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kai.babytun.mapper.GoodsCoverMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.kai.babytun.entity.GoodsCover">
+        <id column="gc_id" property="gcId" />
+        <result column="goods_id" property="goodsId" />
+        <result column="gc_pic_url" property="gcPicUrl" />
+        <result column="gc_thumb_url" property="gcThumbUrl" />
+        <result column="gc_order" property="gcOrder" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        gc_id, goods_id, gc_pic_url, gc_thumb_url, gc_order
+    </sql>
+    
+    <select id="findByGoodsId" parameterType="long" resultType="com.kai.babytun.entity.GoodsCover">
+        select * from t_goods_cover where goods_id = #{value} order by gc_order
+    </select>
+</mapper>
