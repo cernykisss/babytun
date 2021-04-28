@@ -5,6 +5,7 @@ import com.kai.babytun.entity.GoodsParam;
 import com.kai.babytun.mapper.GoodsParamMapper;
 import com.kai.babytun.service.IGoodsParamService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,7 @@ public class GoodsParamServiceImpl extends ServiceImpl<GoodsParamMapper, GoodsPa
     private GoodsParamMapper goodsParamMapper;
 
     @Override
+    @Cacheable(value = "params", key = "#goodsId")
     public List<GoodsParam> findParamByGoodsId(Long goodsId) {
         return goodsParamMapper.findParamByGoodsId(goodsId);
     }
