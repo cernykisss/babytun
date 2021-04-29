@@ -68,37 +68,37 @@ public class GoodsController {
         return mav;
     }
     
-    @GetMapping("/static/{gid}")
-    @ResponseBody
-    public String doStatic(@PathVariable("gid") Long gid) throws IOException, TemplateException {
-        Template template = freemarkerConfig.getTemplate("goods.ftlh");
-        HashMap<Object, Object> map = new HashMap<>();
-        map.put("goods", goodsService.getGoods(gid));
-        map.put("details", goodsDetailService.findDetailsById(gid));
-        map.put("covers", goodsCoverService.findCovers(gid));
-        map.put("param", goodsParamService.findParamByGoodsId(gid));
-        File target = new File("d:/IdeaProjects/babytun-static/" + gid + ".html");
-        FileWriter fileWriter = new FileWriter(target);
-        template.process(map, fileWriter);
-        return target.getPath();
-    }
-
-    @GetMapping("/static_all")
-    @ResponseBody
-    public String doStaticAll() throws IOException, TemplateException {
-        Template template = freemarkerConfig.getTemplate("goods.ftlh");
-        List<Goods> all = goodsService.findAll();
-        for (Goods goods : all) {
-            Long gid = goods.getGoodsId();
-            HashMap<Object, Object> map = new HashMap<>();
-            map.put("goods", goods);
-            map.put("details", goodsDetailService.findDetailsById(gid));
-            map.put("covers", goodsCoverService.findCovers(gid));
-            map.put("param", goodsParamService.findParamByGoodsId(gid));
-            File target = new File("d:/IdeaProjects/babytun-static/" + gid + ".html");
-            FileWriter fileWriter = new FileWriter(target);
-            template.process(map, fileWriter);
-        }
-        return "ok";
-    }
+//    @GetMapping("/static/{gid}")
+//    @ResponseBody
+//    public String doStatic(@PathVariable("gid") Long gid) throws IOException, TemplateException {
+//        Template template = freemarkerConfig.getTemplate("goods.ftlh");
+//        HashMap<Object, Object> map = new HashMap<>();
+//        map.put("goods", goodsService.getGoods(gid));
+//        map.put("details", goodsDetailService.findDetailsById(gid));
+//        map.put("covers", goodsCoverService.findCovers(gid));
+//        map.put("param", goodsParamService.findParamByGoodsId(gid));
+//        File target = new File("d:/IdeaProjects/babytun-static/" + gid + ".html");
+//        FileWriter fileWriter = new FileWriter(target);
+//        template.process(map, fileWriter);
+//        return target.getPath();
+//    }
+//
+//    @GetMapping("/static_all")
+//    @ResponseBody
+//    public String doStaticAll() throws IOException, TemplateException {
+//        Template template = freemarkerConfig.getTemplate("goods.ftlh");
+//        List<Goods> all = goodsService.findAll();
+//        for (Goods goods : all) {
+//            Long gid = goods.getGoodsId();
+//            HashMap<Object, Object> map = new HashMap<>();
+//            map.put("goods", goods);
+//            map.put("details", goodsDetailService.findDetailsById(gid));
+//            map.put("covers", goodsCoverService.findCovers(gid));
+//            map.put("param", goodsParamService.findParamByGoodsId(gid));
+//            File target = new File("d:/IdeaProjects/babytun-static/" + gid + ".html");
+//            FileWriter fileWriter = new FileWriter(target);
+//            template.process(map, fileWriter);
+//        }
+//        return "ok";
+//    }
 }

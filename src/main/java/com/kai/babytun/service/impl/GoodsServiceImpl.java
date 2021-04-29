@@ -36,4 +36,9 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
     public List<Goods> findAll() {
         return goodsMapper.findAll();
     }
+
+    @Override
+    public List<Goods> findLast5M() {
+        return goodsMapper.findLast5M();
+    }
 }

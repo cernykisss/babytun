@@ -18,4 +18,6 @@ public interface GoodsMapper extends BaseMapper<Goods> {
     Goods findById(Long goodsId);
 
     List<Goods> findAll();
+
+    List<Goods> findLast5M();
 }

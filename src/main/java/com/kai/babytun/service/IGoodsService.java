@@ -21,4 +21,6 @@ public interface IGoodsService extends IService<Goods> {
 
     List<Goods> findAll();
 
+    List<Goods> findLast5M();
+
 }
