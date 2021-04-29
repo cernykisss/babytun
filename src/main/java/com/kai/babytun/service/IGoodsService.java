@@ -5,6 +5,8 @@ import com.kai.babytun.entity.Goods;
 import com.kai.babytun.mapper.GoodsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -15,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public interface IGoodsService extends IService<Goods> {
 
-    public Goods getGoods(long goodsId);
+    Goods getGoods(long goodsId);
+
+    List<Goods> findAll();
 
 }

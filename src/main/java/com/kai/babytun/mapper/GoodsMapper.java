@@ -3,6 +3,8 @@ package com.kai.babytun.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.kai.babytun.entity.Goods;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -15,4 +17,5 @@ public interface GoodsMapper extends BaseMapper<Goods> {
 
     Goods findById(Long goodsId);
 
+    List<Goods> findAll();
 }

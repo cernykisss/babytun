@@ -32,7 +32,7 @@ public class Goods implements Serializable {
      * 商品编号
      */
     @TableId(value = "goods_id", type = IdType.AUTO)
-    private Integer goodsId;
+    private Long goodsId;
 
     /**
      * 商品名称

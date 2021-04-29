@@ -9,6 +9,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务实现类
@@ -28,5 +30,10 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
     @Cacheable(value = "goods", key = "#goodsId")
     public Goods getGoods(long goodsId) {
         return goodsMapper.findById(goodsId);
+    }
+
+    @Override
+    public List<Goods> findAll() {
+        return goodsMapper.findAll();
     }
 }

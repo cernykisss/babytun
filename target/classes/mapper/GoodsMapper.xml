@@ -24,4 +24,8 @@
         select * from t_goods where goods_id = #{value}
     </select>
 
+    <select id="findAll" resultType="com.kai.babytun.entity.Goods">
+        select * from t_goods
+    </select>
+
 </mapper>
