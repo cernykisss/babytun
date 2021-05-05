@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>${goods.title}</title>
-    <link href="./layui/css/layui.css" rel="stylesheet">
-    <script src="./layui/layui.all.js"></script>
+    <link href="../layui/css/layui.css" rel="stylesheet">
+    <script src="../layui/layui.all.js"></script>
     <style>
         .bb-info li {
             margin-top: 20px;
@@ -30,6 +30,7 @@
         <li class="layui-nav-item"><a href="">全球购</a></li>
         <li class="layui-nav-item"><a href="">旗舰店</a></li>
         <li class="layui-nav-item"><a href="">宝宝社区</a></li>
+        <li class="layui-nav-item"><a href="../seckill">秒杀大促</a></li>
     </div>
 </ul>
 
@@ -91,6 +92,7 @@
             <ul class="layui-tab-title">
                 <li class="layui-this">产品详情</li>
                 <li>产品参数</li>
+                <li>评论</li>
             </ul>
             <div class="layui-tab-content">
                 <div class="layui-tab-item layui-show bb-description layui-col-xs8 layui-col-xs-offset2">
@@ -114,6 +116,8 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="layui-tab-item layui-col-xs8 layui-col-xs-offset2" id="divEvaluate">
+                </div>
             </div>
         </div>
     </div>
@@ -124,7 +128,14 @@
     ;!function () {
         var layer = layui.layer
             , form = layui.form;
-
+        var $ = layui.$;
+        $.getJSON("/evaluate/${goods.goodsId?string('0')}", function (json) {
+            for (var i = 0; i < json.length; i++) {
+                var eva = json[i];
+                $("#divEvaluate").append("<h2>" + eva.createTime + " " + eva.content + " </h2><hr>");
+                // console.log(json[i]);
+            }
+        })
     }();
 </script>
 <script>

@@ -16,4 +16,7 @@
         evaluate_id, content, stars, create_time, goods_id
     </sql>
 
+    <select id="findByGoodsId" resultType="com.kai.babytun.entity.Evaluate">
+        select * from t_evaluate where goods_id = #{value} order by create_time desc
+    </select>
 </mapper>

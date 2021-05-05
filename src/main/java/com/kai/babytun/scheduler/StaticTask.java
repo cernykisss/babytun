@@ -42,7 +42,7 @@ public class StaticTask {
     //* 代表所有时间
     @Scheduled(cron = "* * * * * ?")
     public void doStatic() throws IOException, TemplateException {
-        Template template = freemarkerConfig.getTemplate("goods.ftlh");
+        Template template = freemarkerConfig.getTemplate("goods.html");
         List<Goods> updatedGoods = goodsService.findLast5M();
         for (Goods goods: updatedGoods) {
             Long gid = goods.getGoodsId();

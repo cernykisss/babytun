@@ -3,6 +3,8 @@ package com.kai.babytun.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.kai.babytun.entity.Evaluate;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -13,4 +15,5 @@ import com.kai.babytun.entity.Evaluate;
  */
 public interface EvaluateMapper extends BaseMapper<Evaluate> {
 
+    List<Evaluate> findByGoodsId(Long gid);
 }
