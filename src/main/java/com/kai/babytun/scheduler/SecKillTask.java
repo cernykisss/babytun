@@ -19,7 +19,7 @@ public class SecKillTask {
     private RedisTemplate redisTemplate;
 
     //任务调度 自动扫描数据库
-    @Scheduled(cron = "* * * * * ?")
+    @Scheduled(cron = "0/5 * * * * ?")
     public void startSecKill() {
         List<PromotionSecKill> unstartedSecKill = promotionSecKillMapper.findUnstartedSecKill();
         for (PromotionSecKill ps : unstartedSecKill) {
@@ -33,6 +33,18 @@ public class SecKillTask {
             }
             ps.setStatus(1);
             promotionSecKillMapper.update(ps);
+        }
+    }
+
+    //结束过期秒杀
+    @Scheduled(cron = "0/5 * * * * ?")
+    public void endExpiredSeckill() {
+        List<PromotionSecKill> expiredSeckills = promotionSecKillMapper.findExpiredSeckill();
+        for (PromotionSecKill expiredSeckill : expiredSeckills) {
+            System.out.println(expiredSeckill.getPsId() + "已经结束");
+            expiredSeckill.setStatus(2);
+            promotionSecKillMapper.update(expiredSeckill);
+            redisTemplate.delete("seckill:count:" + expiredSeckill.getPsId());
         }
     }
 }

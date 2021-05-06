@@ -85,7 +85,7 @@
                 </li>
                 
                 <li>
-                    <button class="layui-btn layui-btn-normal layui-bg-red">立即抢购</button>
+                    <button class="layui-btn layui-btn-normal layui-bg-red" id="btnSeckill">立即抢购</button>
                 </li>
             </ul>
         </div>
@@ -159,6 +159,17 @@
             , height: '380px'
             , arrow: 'hover' //始终显示箭头
             , anim: 'fade' //切换动画方式
+        });
+
+        var $ = layui.$;
+        $("#btnSeckill").click(function () {
+            $.getJSON("/seckill?psId=1&userId=u03", function (json) {
+                if (json.code == 0) {
+                    alert("抢到了！")
+                } else {
+                    alert(json.message);
+                }
+            })
         });
     });
 </script>

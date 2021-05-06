@@ -11,4 +11,6 @@ public interface PromotionSecKillMapper {
     void update(PromotionSecKill promotionSecKill);
 
     PromotionSecKill findById(Long psId);
+
+    List<PromotionSecKill> findExpiredSeckill();
 }
