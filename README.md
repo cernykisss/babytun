@@ -10,5 +10,5 @@
 redis 特点：单线程模型 内存存储高达10w qps 天生分布式支持
 具体实现：把秒杀商品预先加载进redis 使用list key："seckill:count:" + 秒杀id value为10个秒杀商品id
         秒杀时先预减商品 如果成功再往userSet里存 "seckill:user" + 秒杀id set里的值为userid 
-rabbitmq 实现异步下单：exchange-order queue-order 配置文件中设置prefetch对流量进行削峰：定义消费者最多处理多少个消息
+rabbitmq 实现异步下单：exchange-order queue-order 配置文件中设置prefetch对流量进行削峰：定义消费者最多处理多少个消息。OrderConsumer异步创建订单，插入数据库
     点击抢购按钮后， 前台传到controller用户id，service层判断是否还有库存且用户set中isExisted， 如果没有则创建订单，生成订单编号，前台不断刷新订单状态，如果有则返回订单页面， 如果没有则停留再waiting页面 等待后台创建订单
