@@ -17,4 +17,8 @@
     <select id="findById" parameterType="long" resultType="com.kai.babytun.entity.PromotionSecKill">
         select * from t_promotion_seckill where ps_id = #{value};
     </select>
+
+    <select id="findExpiredSeckill" resultType="com.kai.babytun.entity.PromotionSecKill">
+        select * from t_promotion_seckill where now() > end_time and status = 1;
+    </select>
 </mapper>

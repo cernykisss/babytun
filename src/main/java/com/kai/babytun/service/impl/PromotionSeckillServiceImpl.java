@@ -1,5 +1,6 @@
 package com.kai.babytun.service.impl;
 
+import com.kai.babytun.entity.Order;
 import com.kai.babytun.entity.PromotionSecKill;
 import com.kai.babytun.exception.SeckillException;
 import com.kai.babytun.mapper.PromotionSecKillMapper;
@@ -49,4 +50,5 @@ public class PromotionSeckillServiceImpl implements IPromotionSecKillService {
             throw new SeckillException("没抢到");
         }
     }
+
 }

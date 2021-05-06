@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>哇爱 孕产妇入院专用待产包【尖叫升级】12件套送8件升级为20件套待产包【专家型】</title>
     <link href="./layui/css/layui.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script src="./layui/layui.all.js"></script>
     <style>
         .bb-info li {
@@ -163,9 +164,19 @@
 
         var $ = layui.$;
         $("#btnSeckill").click(function () {
-            $.getJSON("/seckill?psId=1&userId=u03", function (json) {
+            $.getJSON("/seckill?psId=1&userId=ifdsfffdP0fffff", function (json) {
                 if (json.code == 0) {
                     alert("抢到了！")
+                    var orderNo = json.data.orderNo;
+                    console.info(orderNo);
+                    swal({
+                        title : "正在创建订单， 请稍后。。。。",
+                        timer : 3000,
+                        showConfirmButton : false,
+                        type : "info"
+                    }).then(function () {
+                        window.location.href = "/checkorder?orderNo=" + orderNo;
+                    })
                 } else {
                     alert(json.message);
                 }

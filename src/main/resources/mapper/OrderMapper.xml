@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kai.babytun.mapper.OrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.kai.babytun.entity.Order">
+        <id column="order_id" property="orderId" />
+        <result column="order_no" property="orderNo" />
+        <result column="order_status" property="orderStatus" />
+        <result column="user_id" property="userId" />
+        <result column="recv_name" property="recvName" />
+        <result column="recv_address" property="recvAddress" />
+        <result column="recv_mobile" property="recvMobile" />
+        <result column="postage" property="postage" />
+        <result column="amount" property="amount" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        order_id, order_no, order_status, user_id, recv_name, recv_address, recv_mobile, postage, amount, create_time
+    </sql>
+
+    <insert id="insert" parameterType="com.kai.babytun.entity.Order">
+        insert into t_order(order_no, order_status, user_id, recv_name, recv_address, recv_mobile, postage, amount, create_time)
+        value (#{orderNo}, #{orderStatus}, #{userId}, #{recvName}, #{recvAddress}, #{recvMobile}, #{postage}, #{amount}, #{createTime})
+        <selectKey resultType="Integer" keyProperty="orderId">
+            SELECT LAST_INSERT_ID() AS ID
+        </selectKey>
+    </insert>
+    
+    <select id="findByOrderNo" parameterType="java.lang.String" resultType="com.kai.babytun.entity.Order">
+        select * from t_order where order_no = #{value}
+    </select>
+</mapper>
