@@ -16,4 +16,4 @@ rabbitmq 实现异步下单：exchange-order queue-order 配置文件中设置pr
 nginx六种负载均衡策略：1.default:轮询策略 2.weighted 权重策略 3.least connected 最少连接策略
 4. fair 按响应时间 5. IP Hash 6. url Hash
 nginx 心跳检查机制 max_fails = 3; fail_timeout = 30s
-开放8001~8004四个port 然后在nginx.config 中设置upstream和server （nginx通过80端口提供服务） 
+开放8001~8004四个port 然后在nginx.config中设置upstream和server （nginx通过80端口提供服务） 
