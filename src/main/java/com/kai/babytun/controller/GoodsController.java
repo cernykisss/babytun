@@ -49,7 +49,7 @@ public class GoodsController {
 
     @GetMapping("/goods/{gid}")
     public ModelAndView toGoods(@PathVariable("gid") Long gid) {
-        ModelAndView mav = new ModelAndView("/goods");
+        ModelAndView mav = new ModelAndView("/goods1");
         Goods goods = goodsService.getGoods(gid);
         List<GoodsCover> covers = goodsCoverService.findCovers(gid);
         List<GoodsDetail> details = goodsDetailService.findDetailsById(gid);
