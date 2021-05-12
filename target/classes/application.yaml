@@ -27,5 +27,4 @@ mybatis:
   configuration:
 #    转换驼峰
     map-underscore-to-camel-case: true
-server:
-  port: 8080
+

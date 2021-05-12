@@ -7,8 +7,10 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.File;
@@ -47,6 +49,9 @@ public class GoodsController {
     @Autowired
     private Configuration freemarkerConfig;
 
+    @Value("${server.port}")
+    private int port;
+
     @GetMapping("/goods/{gid}")
     public ModelAndView toGoods(@PathVariable("gid") Long gid) {
         ModelAndView mav = new ModelAndView("/goods1");
@@ -58,6 +63,7 @@ public class GoodsController {
         mav.addObject("covers", covers);
         mav.addObject("details", details);
         mav.addObject("param", params);
+        mav.addObject("port", port);
         return mav;
     }
 
@@ -67,6 +73,23 @@ public class GoodsController {
         return evaluateService.findEvalsByGoodsId(gid);
     }
 
+    @GetMapping("/login")
+    @ResponseBody
+    public String login(String u, WebRequest request) {
+        request.setAttribute("user", u, WebRequest.SCOPE_REQUEST);
+        return "port: " + port + ",login success";
+    }
+
+    @GetMapping("/check")
+    @ResponseBody
+    public String check(WebRequest request) {
+        String user = (String) request.getAttribute("user", WebRequest.SCOPE_REQUEST);
+        if (user != null) {
+            return "port: " + port + " , user = " + user;
+        } else {
+            return "port: " + port + " , redirect to login page";
+        }
+    }
 
     //静态任务
 //    @GetMapping("/static/{gid}")
