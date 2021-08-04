@@ -51,6 +51,7 @@ public class OrderConsumer {
             orderMapper.insert(order);
             Long tag = (Long) headers.get(AmqpHeaders.DELIVERY_TAG);
             channel.basicAck(tag, false);
+            System.out.println("订单" + order.getOrderNo() + "已创建");
         } catch (IOException e) {
             e.printStackTrace();
         }
